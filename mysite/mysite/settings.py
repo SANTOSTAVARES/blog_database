@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'blog.apps.BlogConfig', #Conect the Blog application for Django to understand the application is activated. 
 ]
 
 MIDDLEWARE = [

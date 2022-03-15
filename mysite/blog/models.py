@@ -17,7 +17,7 @@ class Post(models.Model):
     author = models.ForeignKey(User,
         on_delete=models.CASCADE,
         related_name='blog_posts') #If delete user from database, the SQL delete all its posts.
-    body models.TextField() #post content.
+    body = models.TextField() #post content.
     publish = models.DateTimeField(default=timezone.now) #Advise when the post was published.
     created = models.DateField(auto_now_add=True) #Advise when the post was created.
     update = models.DateTimeField(auto_now=True) #Advise when the post was updated.
