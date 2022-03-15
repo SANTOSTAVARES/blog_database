@@ -11,22 +11,22 @@ class Post(models.Model):
         ('draft', 'Draft'), 
         ('published', 'Published'),
     )
-    title = models.CharField(max_length=250)
-    slug = models.SlugField(max_length=250,
-        unique_for_date='publish')
+    title = models.CharField(max_length=250) #Post title field.
+    slug = models.SlugField(max_length=250, #This is used to make URL.
+        unique_for_date='publish') #Add date to URL publish.
     author = models.ForeignKey(User,
         on_delete=models.CASCADE,
-        related_name='blog_posts')
-    body models.TextField()
-    publish = models.DateTimeField(default=timezone.now)
-    created = models.DateField(auto_now_add=True)
-    update = models.DateTimeField(auto_now=True)
-    status = models.CharField(max_length=10,
-        choices=STATUS_CHOICES,
+        related_name='blog_posts') #If delete user from database, the SQL delete all its posts.
+    body models.TextField() #post content.
+    publish = models.DateTimeField(default=timezone.now) #Advise when the post was published.
+    created = models.DateField(auto_now_add=True) #Advise when the post was created.
+    update = models.DateTimeField(auto_now=True) #Advise when the post was updated.
+    status = models.CharField(max_length=10, #Show the status post.
+        choices=STATUS_CHOICES, #The status has to be specified.
         default='draft')
 
 class Meta:
-    ordering = ('-publish',)
+    ordering = ('-publish',) #Sort results following the 'publish' field (old first).
 
 def __str__(self):
     return self.title
