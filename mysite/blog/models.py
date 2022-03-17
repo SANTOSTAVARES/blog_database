@@ -22,7 +22,7 @@ class Post(models.Model):
     created = models.DateField(auto_now_add=True) #Advise when the post was created.
     update = models.DateTimeField(auto_now=True) #Advise when the post was updated.
     status = models.CharField(max_length=10, #Show the status post.
-        choices=STATUS_CHOICES, #The status has to be specified.
+        choices=STATUS_CHOICES, #The post status has to be specified.
         default='draft')
 
 class Meta:
